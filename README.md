@@ -94,3 +94,32 @@ await contract.getNumber();
 It should now return `99`.
 
 ---
+
+## Running Tests
+
+To ensure the smart contract works correctly, you can run automated tests using Hardhat.
+
+### Running the Tests
+
+Run the following command:
+
+```sh
+npx hardhat test
+```
+
+### What These Tests Do
+
+- ✅ **First Test**: Ensures the contract is deployed with the correct initial value.
+- ✅ **Second Test**: Verifies that `setNumber()` correctly updates the stored value.
+
+If successful, the output should show:
+
+```
+BasicStorage
+  ✔ Should deploy the contract with an initial value
+  ✔ Should update the stored number
+
+2 passing (1s)
+```
+
+These tests help confirm that the contract behaves as expected before deploying to a live network.

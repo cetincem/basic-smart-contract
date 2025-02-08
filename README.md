@@ -1,4 +1,6 @@
-# Basi Smart Contract
+# Basic Smart Contract
+
+This project demonstrates a simple Ethereum smart contract for storing and retrieving a numerical value on the blockchain. It covers essential smart contract concepts such as state variables, functions, and blockchain interaction, making it an ideal starting point for Solidity development.
 
 ## What is a Smart Contract?
 
@@ -8,6 +10,8 @@ A smart contract is a self-executing program that runs on a blockchain. It:
 - Executes **automatically** when conditions are met.
 - Cannot be modified once deployed (**immutable**).
 - Runs **decentralized** on the blockchain.
+
+---
 
 ## Running a Local Ethereum Network
 
@@ -30,4 +34,63 @@ npx hardhat node
 - Simulate multiple users (e.g., owner, buyer, seller).
 - Run transactions locally before deploying to a live network.
 
-Use these accounts for development and testing, but **never use the private keys on a real network**.
+⚠️ **Never use these private keys on a real network.**
+
+---
+
+## Deploying the Smart Contract
+
+To deploy the contract to the local Hardhat network, run:
+
+```sh
+npx hardhat run scripts/deploy.ts --network localhost
+```
+
+### What Happens?
+
+- The smart contract is compiled and deployed to the local blockchain.
+- A contract address is generated.
+- You can interact with the contract using this address.
+
+---
+
+## Interacting with the Smart Contract
+
+### Open Hardhat Console
+
+```sh
+npx hardhat console --network localhost
+```
+
+### Load the Contract
+
+```js
+const contract = await ethers.getContractAt(
+  "BasicStorage",
+  "<DEPLOYED_CONTRACT_ADDRESS>"
+);
+```
+
+Replace `<DEPLOYED_CONTRACT_ADDRESS>` with your actual contract address from deployment.
+
+### Read the Stored Value
+
+```js
+await contract.getNumber();
+```
+
+### Update the Stored Value
+
+```js
+await contract.setNumber(99);
+```
+
+### Verify the Change
+
+```js
+await contract.getNumber();
+```
+
+It should now return `99`.
+
+---

@@ -11,8 +11,6 @@ A smart contract is a self-executing program that runs on a blockchain. It:
 - Cannot be modified once deployed (**immutable**).
 - Runs **decentralized** on the blockchain.
 
----
-
 ## Running a Local Ethereum Network
 
 You can start a local Ethereum network using Hardhat by running:
@@ -36,8 +34,6 @@ npx hardhat node
 
 ⚠️ **Never use these private keys on a real network.**
 
----
-
 ## Deploying the Smart Contract
 
 To deploy the contract to the local Hardhat network, run:
@@ -51,8 +47,6 @@ npx hardhat run scripts/deploy.ts --network localhost
 - The smart contract is compiled and deployed to the local blockchain.
 - A contract address is generated.
 - You can interact with the contract using this address.
-
----
 
 ## Interacting with the Smart Contract
 
@@ -93,8 +87,6 @@ await contract.getNumber();
 
 It should now return `99`.
 
----
-
 ## Running Tests
 
 To ensure the smart contract works correctly, you can run automated tests using Hardhat.
@@ -123,3 +115,26 @@ BasicStorage
 ```
 
 These tests help confirm that the contract behaves as expected before deploying to a live network.
+
+## Continuous Integration (CI/CD) for Testing
+
+This project includes **GitHub Actions** workflows for automated testing:
+
+### **1. Automated Tests on Push & PR (`ci.yml`)**
+
+- Runs tests **automatically** when you push changes to `main` or `dev`.
+- Ensures that any updates do not break existing functionality.
+- Tests are executed using **Node.js 22** in a GitHub Actions workflow.
+
+### **2. Manual Test Execution (`ci-manual.yml`)**
+
+- Allows **manually running tests** from the GitHub Actions UI.
+- Useful for verifying changes before pushing them.
+
+### **How to Trigger Manual Tests?**
+
+1. Go to the **GitHub Actions** tab.
+2. Select **Run Hardhat Tests (Manual)**.
+3. Click **Run workflow**.
+
+This ensures that smart contracts are thoroughly tested before deployment.

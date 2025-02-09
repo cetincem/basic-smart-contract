@@ -33,4 +33,34 @@ describe("BasicStorage", function () {
     // Verify that the stored value has been updated successfully
     expect(await contract.getNumber()).to.equal(newNumber);
   });
+
+  // Test case to ensure setNumber() reverts when trying to store the same value
+  it("Should revert when setting the same number", async function () {
+    const initialNumber = 42; // Initial value for deployment
+
+    // Deploy the contract
+    const BasicStorage = await ethers.getContractFactory("BasicStorage");
+    const contract = await BasicStorage.deploy(initialNumber);
+    await contract.waitForDeployment();
+
+    // Expect transaction to fail when trying to set the same number
+    await expect(contract.setNumber(initialNumber)).to.be.revertedWith(
+      "New number must be different"
+    );
+  });
+
+  // Test case to ensure setNumber() reverts when trying to store zero
+  it("Should revert when setting zero", async function () {
+    const initialNumber = 42; // Initial value for deployment
+
+    // Deploy the contract
+    const BasicStorage = await ethers.getContractFactory("BasicStorage");
+    const contract = await BasicStorage.deploy(initialNumber);
+    await contract.waitForDeployment();
+
+    // Expect transaction to fail when setting the number to zero
+    await expect(contract.setNumber(0)).to.be.revertedWith(
+      "Number must be greater than zero"
+    );
+  });
 });

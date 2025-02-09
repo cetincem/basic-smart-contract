@@ -23,7 +23,9 @@ contract BasicStorage {
     /// @dev This function modifies blockchain state, so it requires a transaction (costs gas)
     /// @param _newNumber The new value to store
     function setNumber(uint256 _newNumber) public {
-        // Writing to storage is expensive, as it modifies blockchain state permanently
+        require(_newNumber != storedNumber, "New number must be different"); // Prevents redundant updates
+        require(_newNumber > 0, "Number must be greater than zero"); // Ensures positive values
+
         storedNumber = _newNumber;
     }
 }

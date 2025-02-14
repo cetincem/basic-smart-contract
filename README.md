@@ -11,6 +11,16 @@ A smart contract is a self-executing program that runs on a blockchain. It:
 - Cannot be modified once deployed (**immutable**).
 - Runs **decentralized** on the blockchain.
 
+## Hardhat Overview
+
+Hardhat is a development environment to compile, deploy, test, and debug your Ethereum software. It helps developers manage and automate recurring tasks while remaining extensible for advanced use cases.
+
+Key Features:
+
+- **Flexible and Extensible:** Customize and extend functionality with plugins.
+- **Built-in Network:** Comes with Hardhat Network for local testing.
+- **Comprehensive Debugging:** Provides advanced debugging and error reporting tools.
+
 ## Running a Local Ethereum Network
 
 You can start a local Ethereum network using Hardhat by running:
